@@ -1,0 +1,7 @@
+{
+  "name": "queensjs-october-2016",
+  "version": "0.0.0",
+  "dependencies": {
+    "prism": "gh-pages"
+  }
+}
