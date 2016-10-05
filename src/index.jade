@@ -127,66 +127,44 @@ html
         img.headroom(src='images/ibm.jpg' alt='Eye Bee M by Paul Rand')
         
         h5 The opinions expressed in this talk are soley my own
-
-      section(data-bespoke-backdrop='string-theory')
-        h1 Believe it or not but I got into programming through art!
-      
-      section
-        h2 String Theory
-        video.headroom(max-width='640', height='480', controls='')
-            source(src='images/string-theory.mp4', type='video/mp4')
-
-      section
-        h2 The Speaker Bot
-        video.headroom(max-width='640', height='480', controls='')
-            source(src='images/speakerbot.mp4', type='video/mp4')
-
-      section
-        h2 The Voxel Meter
-        video.headroom(max-width='640', height='480', controls='')
-            source(src='images/voxelmeter.mp4', type='video/mp4')
-
-
-      section(data-bespoke-backdrop='monome')
-        h1 It all started with a little device called the monome
-
-      section
-        h2 The monome introduced me 
-        h2  to a programming language called Max / MSP
-        img.headroom(src='images/maxmsp.png' alt='max/msp')
-        
-      section
-        h2 Max / MSP allows you to access to it's entire internal API through...
-
-      section
-        h1 JavaScript
-
-      section(data-bespoke-backdrop='knoll')
-        h2 My love of Music and Technology brought me to California
-        h2 to study at CCRMA
-        h4 The Center for Computer Research in Music and Acoustics
-        img.headroom(src='images/ccrma.jpg' alt='ccrma')
-
-      section
-        h2 While at CCRMA I had the opportunity to learn about sound.
-        h3 The math behind it, the physics behind it, how we compute it,
-        h3 and most interestingly...
         
       section(data-bespoke-backdrop='krang')
-        h1 How our brains interpret it
-        
+        h1 How does our brain interpret sound?
+
+      section
+        img(src='images/ear.jpg' alt='because your ear silly')
+
+      section
+        h2 HRTF
+        img.headroom(src='images/HRTF.jpg' alt='head related transfer functions are cool')
+
+      section
+        h3 Exponential response!
+        img(src='images/freq-response.jpg' alt='frequency response of the human ear')
+
+      section
+        img(src='images/double.jpg' alt='as frequency increases exponentially, how we experience pitch increases linearly' width="80%")
+
+      section(data-bespoke-backdrop='mind-blown-again')
+        h1 As frequency grows exponentially, we experience pitch linearly.
+
+      section
+        h2 http://kni.sh/voxelMeterJS/
+        iframe.headroom(src='examples/voxel-meter' class='demo-iframe')
+        a(href='https://github.com/TheAlphaNerd/voxel-meter-js/') View the Project on Github
+
       section
         h1 What is sampling?
         
       section
         img(src='images/mpc.jpg' alt='not two tables and a microphone, just an mpc' width='500px')
-      
+ 
       section
         h2 Technically correct
         h2 but let's dive deeper
         
       section(data-bespoke-backdrop='sampling')
-        h3 Sampling is the method of converting an analogue signal to digital data.
+        h3 Sampling is the method of converting an analog signal to digital data.
         h3 Digital data which can eventually be turned back into an analogue signal.
         
       section
@@ -243,7 +221,6 @@ html
         h3 Each channel is "interleaved"
         h4 [L0, R0, L1, R1, L2, R2... Ln, Rn]
 
-
       section
         h2 Many people will refer to this as a lossless encoding as almost no data is lost from the original source
       
@@ -291,9 +268,6 @@ html
       section
         img(src='images/why.jpg' alt='but why?')
 
-      section
-        img(src='images/ear.jpg' alt='because your ear silly')
-
       section(data-bespoke-backdrop='freq')
         h3 The human ear only hears frequencies
         h3 up to around 20 kHz
@@ -319,124 +293,128 @@ html
       section
         iframe(src='./examples/resamplr/index.html' class='demo-iframe')
       
-      section
-        h2 Playing the original
-        pre
-          code.language-javascript.
-            function original() {
-              async.waterfall([
-                loadUrl.bind(null, 'put-url-hurr'),
-                playBuffer
-              ]);
-            }
-
-      section
-        h2 Playing the Resampled Version
-        pre
-          code.language-javascript.
-            function downsampled() {
-              async.waterfall([
-                loadUrl.bind(null, 'put-url-hurr'),
-                resample,
-                playBuffer
-              ]);
-            }
-      
-      section
-        pre
-          code.language-javascript.
-            // http://www.html5rocks.com/en/tutorials/webaudio/intro/
-            function loadUrl(url, next) {
-              var request = new XMLHttpRequest();
-              request.open('GET', url, true);
-              request.responseType = 'arraybuffer';
-              request.onload = function() {
-                context.decodeAudioData(request.response, function (buffer) {
-                  next(null, buffer);
-                });
-              };
-              request.send();
-            }
-      
-      section
-        pre
-          code.language-javascript.
-            function playBuffer(buffer/*, next*/) {
-              var source = context.createBufferSource();
-              source.buffer = buffer;
-              source.connect(context.destination);
-              source.start(0);
-            }
-      
-      section
-        pre
-          code.language-javascript.
-            function resample(buffer, next) {
-              var frameCount = buffer.length
-                * resampleRate / buffer.sampleRate;
-              var offlineContext = new OfflineAudioContext(
-                buffer.numberOfChannels, frameCount, resampleRate);
-              var bufferSource = offlineContext.createBufferSource();
-              bufferSource.buffer = buffer;
-              bufferSource.connect(offlineContext.destination);
-              bufferSource.start();
-              offlineContext.startRendering().then(function (renderedBuffer) {
-                next(null, renderedBuffer);
-              });
-            }
+      //- section
+      //-   h2 Playing the original
+      //-   pre
+      //-     code.language-javascript.
+      //-       function original() {
+      //-         async.waterfall([
+      //-           loadUrl.bind(null, 'put-url-hurr'),
+      //-           playBuffer
+      //-         ]);
+      //-       }
+      //-
+      //- section
+      //-   h2 Playing the Resampled Version
+      //-   pre
+      //-     code.language-javascript.
+      //-       function downsampled() {
+      //-         async.waterfall([
+      //-           loadUrl.bind(null, 'put-url-hurr'),
+      //-           resample,
+      //-           playBuffer
+      //-         ]);
+      //-       }
+      //-
+      //- section
+      //-   pre
+      //-     code.language-javascript.
+      //-       // http://www.html5rocks.com/en/tutorials/webaudio/intro/
+      //-       function loadUrl(url, next) {
+      //-         var request = new XMLHttpRequest();
+      //-         request.open('GET', url, true);
+      //-         request.responseType = 'arraybuffer';
+      //-         request.onload = function() {
+      //-           context.decodeAudioData(request.response, function (buffer) {
+      //-             next(null, buffer);
+      //-           });
+      //-         };
+      //-         request.send();
+      //-       }
+      //-
+      //- section
+      //-   pre
+      //-     code.language-javascript.
+      //-       function playBuffer(buffer/*, next*/) {
+      //-         var source = context.createBufferSource();
+      //-         source.buffer = buffer;
+      //-         source.connect(context.destination);
+      //-         source.start(0);
+      //-       }
+      //-
+      //- section
+      //-   pre
+      //-     code.language-javascript.
+      //-       function resample(buffer, next) {
+      //-         var frameCount = buffer.length
+      //-           * resampleRate / buffer.sampleRate;
+      //-         var offlineContext = new OfflineAudioContext(
+      //-           buffer.numberOfChannels, frameCount, resampleRate);
+      //-         var bufferSource = offlineContext.createBufferSource();
+      //-         bufferSource.buffer = buffer;
+      //-         bufferSource.connect(offlineContext.destination);
+      //-         bufferSource.start();
+      //-         offlineContext.startRendering().then(function (renderedBuffer) {
+      //-           next(null, renderedBuffer);
+      //-         });
+      //-       }
 
       section
         h2 http://kni.sh/voxelMeterJS/
         iframe.headroom(src='examples/voxel-meter' class='demo-iframe')
         a(href='https://github.com/TheAlphaNerd/voxel-meter-js/') View the Project on Github
 
-      section
-        pre
-          code.language-javascript.
-            function Audio() {
-              this.context =
-                new (window.AudioContext || window.webkitAudioContext)();
-              this.analyzer = this.context.createAnalyser();
-              this.frequencyData = new Uint8Array(256);
-
-              wireMic(this.context, this.analyzer);
-
-              return this;
-            }
-      
-      section
-        pre
-          code.language-javascript.
-            function wireMic(audioContext, analyzer) {
-              function gotStream(stream) {
-                // Create an AudioNode from the stream.
-                var mediaStreamSource = 
-                  audioContext.createMediaStreamSource(stream);
-
-                // Connect it to the destination to hear
-                // yourself (or any other node for processing!)
-                mediaStreamSource.connect(analyzer);
-              }
-
-              navigator.getUserMedia = /*shim*/
-              navigator.getUserMedia({audio: true},
-                gotStream, function (err) {
-                console.log(err);
-              });
-            }
-
-      section
-        pre
-          code.language-javascript.
-            Audio.prototype.getFFT = function () {
-              this.analyzer.getByteFrequencyData(this.frequencyData);
-              return this.frequencyData;
-            };
+      //- section
+      //-   pre
+      //-     code.language-javascript.
+      //-       function Audio() {
+      //-         this.context =
+      //-           new (window.AudioContext || window.webkitAudioContext)();
+      //-         this.analyzer = this.context.createAnalyser();
+      //-         this.frequencyData = new Uint8Array(256);
+      //-
+      //-         wireMic(this.context, this.analyzer);
+      //-
+      //-         return this;
+      //-       }
+      //-
+      //- section
+      //-   pre
+      //-     code.language-javascript.
+      //-       function wireMic(audioContext, analyzer) {
+      //-         function gotStream(stream) {
+      //-           // Create an AudioNode from the stream.
+      //-           var mediaStreamSource =
+      //-             audioContext.createMediaStreamSource(stream);
+      //-
+      //-           // Connect it to the destination to hear
+      //-           // yourself (or any other node for processing!)
+      //-           mediaStreamSource.connect(analyzer);
+      //-         }
+      //-
+      //-         navigator.getUserMedia = /*shim*/
+      //-         navigator.getUserMedia({audio: true},
+      //-           gotStream, function (err) {
+      //-           console.log(err);
+      //-         });
+      //-       }
+      //-
+      //- section
+      //-   pre
+      //-     code.language-javascript.
+      //-       Audio.prototype.getFFT = function () {
+      //-         this.analyzer.getByteFrequencyData(this.frequencyData);
+      //-         return this.frequencyData;
+      //-       };
 
       section
         h2 http://kni.sh/harmonic
         h3 Visit the above link on your phone or lappy
         h4 P.S. it is about to make some sound, so turn it up!
+      
+      section
+        h2 http://harmonic.kni.sh/
+        iframe.headroom(src='http://harmonic.kni.sh/gepetto' class='demo-iframe')
       
       section
         img.headroom(src='images/wot.gif' alt='wot was that?' height='80%')
@@ -447,38 +425,23 @@ html
       section
         img.headroom(src='images/fourier_flute_violin.png' alt='harmoic series of a flute and violin' height='80%')
 
-      section
-        pre
-          code.language-javascript.
-            var context =
-              new (window.AudioContext || window.webkitAudioContext)();
-
-            var base = 55;
-            var overtone = Math.floor(Math.random() * 15) + 1;
-            var freq = base * overtone;
-            var osc = context.createOscillator();
-
-            osc.frequency.value = freq;
-            osc.connect(context.destination);
-            osc.start();
-
-      section
-        h2 HRTF
-        img.headroom(src='images/HRTF.jpg' alt='head related transfer functions are cool')
-
-      section
-        h3 Let's go back to the human ear for a second
-        h3 and talk about why music works
-
-      section
-        h3 Exponential response!
-        img(src='images/freq-response.jpg' alt='frequency response of the huan ear')
+      //- section
+      //-   pre
+      //-     code.language-javascript.
+      //-       var context =
+      //-         new (window.AudioContext || window.webkitAudioContext)();
+      //-
+      //-       var base = 55;
+      //-       var overtone = Math.floor(Math.random() * 15) + 1;
+      //-       var freq = base * overtone;
+      //-       var osc = context.createOscillator();
+      //-
+      //-       osc.frequency.value = freq;
+      //-       osc.connect(context.destination);
+      //-       osc.start();
 
       section
         img(src='images/double.jpg' alt='as frequency increases exponentially, how we experience pitch increases linearly' width="80%")
-
-      section(data-bespoke-backdrop='mind-blown-again')
-        h1 As frequency grows exponentially, we experience pitch linearly.
         
       section
         h2 This was originally discovered by Pythagoras (afaik)
