@@ -99,15 +99,18 @@ html
     .eleven {
       background-image: url('images/eleven.gif')
     }
+    
+    .different {
+      background-image: url('images/completely-different.gif')
+    }
 
   body
 
     article
 
       section
-        h2 Signal Processing,
-        h2 Perceptual Audio,
-        h3 and The Web Audio API
+        h2 This is your brain on
+        h2 Perceptual Audio
         h4 With your host Myles Borins
         h4
           a(href='https://twitter.com/thealphanerd') @thealphanerd
@@ -135,10 +138,6 @@ html
         img(src='images/ear.jpg' alt='because your ear silly')
 
       section
-        h2 HRTF
-        img.headroom(src='images/HRTF.jpg' alt='head related transfer functions are cool')
-
-      section
         h3 Exponential response!
         img(src='images/freq-response.jpg' alt='frequency response of the human ear')
 
@@ -149,9 +148,11 @@ html
         h1 As frequency grows exponentially, we experience pitch linearly.
 
       section
-        h2 http://kni.sh/voxelMeterJS/
-        iframe.headroom(src='examples/voxel-meter' class='demo-iframe')
-        a(href='https://github.com/TheAlphaNerd/voxel-meter-js/') View the Project on Github
+        h2 HRTF
+        img.headroom(src='images/HRTF.jpg' alt='head related transfer functions are cool')
+
+      section(data-bespoke-backdrop='different')
+        h1 And now for something completely different
 
       section
         h1 What is sampling?
@@ -165,7 +166,7 @@ html
         
       section(data-bespoke-backdrop='sampling')
         h3 Sampling is the method of converting an analog signal to digital data.
-        h3 Digital data which can eventually be turned back into an analogue signal.
+        h3 Digital data which can eventually be turned back into an analog signal.
         
       section
         h3 While you can sample many things
@@ -177,7 +178,7 @@ html
         img.headroom(src='images/saywhat.gif')
 
       section
-        h3 Unlike an analogue recording 
+        h3 Unlike an analog signal
         h3 which happens in constant time
         h3 A digital recording needs to be represented in sampled blocks
       
@@ -408,7 +409,7 @@ html
       //-       };
 
       section
-        h2 http://kni.sh/harmonic
+        h2 http://harmonic.kni.sh/
         h3 Visit the above link on your phone or lappy
         h4 P.S. it is about to make some sound, so turn it up!
       
