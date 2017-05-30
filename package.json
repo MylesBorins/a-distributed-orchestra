@@ -1,7 +1,7 @@
 {
-  "name": "queensjs-october-2016",
-  "version": "0.0.0",
-  "repository": "https://github.com/TheAlphaNerd/queensjs-october-2016/",
+  "name": "a-distributed-orchestra",
+  "version": "1.0.0",
+  "repository": "https://github.com/MylesBorins/a-distributed-orchestra/",
   "license": "MIT",
   "devDependencies": {
     "bespoke": "^1.0.0",
