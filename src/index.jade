@@ -29,7 +29,7 @@ html
     }
     
     .krang {
-      background-image: url('images/krang.jpg')
+      background-image: url('images/krang.gif')
     }
     
     .sampling {
@@ -112,9 +112,9 @@ html
         h2 This is your brain on
         h2 Perceptual Audio
         h4 With your host
-        h4
+        h3
           a(href='https://twitter.com/thealphanerd') @MylesBorins
-        p  Revolution Conf 2016
+        p  Revolution Conf 2017
 
       section(data-bespoke-backdrop='hello')
         h1 Hello There
@@ -148,8 +148,8 @@ html
         h1 As frequency grows exponentially, we experience pitch linearly.
 
       section
-        h2 HRTF
-        img.headroom(src='images/HRTF.jpg' alt='head related transfer functions are cool')
+        h3 We will dig into HRTF and pychoacoustics if we have time
+        img.headroom(src='images/HRTF.jpg' alt='head related transfer functions are cool' width="50%")
 
       section(data-bespoke-backdrop='different')
         h1 And now for something completely different
@@ -186,11 +186,11 @@ html
         h1 You can think of a sample as a pixel for sound!
         
       section
-        h2 How about a quick primer on some audio slang
+        h3 How about a quick primer on some audio slang
         img.headroom(src='images/bloodsport.gif' alt='a humorous gif making a scene from bloodsport appear to be a band playing KUMITE')
         
       section
-        h2 Sample Rate
+        h2 "Sample Rate"
         h3 The number of samples used to represent a second of sound
         h4 A common Sample Rate is 44.1khz
       
@@ -223,10 +223,12 @@ html
         h4 [L0, R0, L1, R1, L2, R2... Ln, Rn]
 
       section
-        h2 Many people will refer to this as a lossless encoding as almost no data is lost from the original source
+        h3 Many people will refer to this as a lossless encoding
+        h3 as almost no data is lost from the original source
       
       section
-        h2 An mp3, alternatively, does lossy encoding using pychoacoustic heuristics to decide which data is actually important
+        h3 An mp3, alternatively, does lossy encoding using pychoacoustic heuristics
+        h3 to decide which data is actually important
 
       section
         h1 What are the limitations of sampling?
@@ -286,7 +288,7 @@ html
 
       section(data-bespoke-backdrop='telephone')
         h1 What does a lower sample rate sounds like?
-        h3 traditionally telephones are samples at 8 kHz
+        h3 traditionally telephones are sampled at 8 kHz
 
       section(data-bespoke-backdrop='hammer')
         h1 DEMO TIME
@@ -320,7 +322,6 @@ html
       section
         pre
           code.language-javascript.
-            // http://www.html5rocks.com/en/tutorials/webaudio/intro/
             function loadUrl(url, next) {
               var request = new XMLHttpRequest();
               request.open('GET', url, true);
@@ -359,6 +360,9 @@ html
                 next(null, renderedBuffer);
               });
             }
+
+      section
+        img(src="./images/fast.jpg" alt="the fast and the fourier" width="75%")
 
       section
         h2 http://kni.sh/voxelMeterJS/
